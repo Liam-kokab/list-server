@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const { v4: uuid } = require('uuid');
 const jwt = require('jsonwebtoken');
 
-const { createElement } = require('./elementResolverFunctions');
+const { createElement } = require('./element-resolver');
 
 const createToken = (secret, payload = {}) => jwt.sign(payload, secret, { expiresIn: '30d' });
 const sanitizeAndAddToken = ({ id, name, email, root_list_id, token }, secret) =>
