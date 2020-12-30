@@ -8,6 +8,10 @@ const elementModule = (sequelize, DataTypes) =>
       },
     },
 
+    description: {
+      type: DataTypes.TEXT,
+    },
+
     id: {
       type: DataTypes.UUID,
       primaryKey: true,
@@ -18,8 +22,16 @@ const elementModule = (sequelize, DataTypes) =>
       },
     },
 
-    owner_id: {
-      type: DataTypes.UUID,
+    read_access: {
+      type: DataTypes.ARRAY(DataTypes.UUID),
+      allowNull: false,
+      validate: {
+        notEmpty: true,
+      },
+    },
+
+    write_access: {
+      type: DataTypes.ARRAY(DataTypes.UUID),
       allowNull: false,
       validate: {
         notEmpty: true,
@@ -35,8 +47,12 @@ const elementModule = (sequelize, DataTypes) =>
     },
 
     status: {
-      type: DataTypes.JSONB,
-    }
+      type: DataTypes.SMALLINT
+    },
+
+    color: {
+      type: DataTypes.STRING
+    },
 
   });
 
