@@ -16,7 +16,7 @@ const resolvers = {
 
     // element mutation resolvers
     createElement: async (_, args, context) => await createElement(args, context),
-    UpdateElement: async (_, args, context) => await UpdateElement(args, context),
+    updateElement: async (_, args, context) => await UpdateElement(args, context),
   }
 }
 
