@@ -1,13 +1,13 @@
 const { signIn, signUp } = require('./user-resolver');
-const { createElement } = require('./element-resolver');
+const { createElement, getElement, UpdateElement } = require('./element-resolver');
 
 const resolvers = {
   Query: {
     // user query resolvers
-    user: async (parent, { id }, { models }) => await models.User.findById(id),
+    user: async (_, { id }, { models }) => await models.User.findById(id),
 
     // element query resolvers
-    element: async (parent, { id }, { models }) => await models.element.findById(id),
+    element: async (_, { id }, context) => await getElement(id, context),
   },
   Mutation: {
     // user mutation resolvers
@@ -16,6 +16,7 @@ const resolvers = {
 
     // element mutation resolvers
     createElement: async (_, args, context) => await createElement(args, context),
+    UpdateElement: async (_, args, context) => await UpdateElement(args, context),
   }
 }
 

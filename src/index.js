@@ -10,7 +10,7 @@ server.applyMiddleware({ app });
 const httpServer = http.createServer(app);
 server.installSubscriptionHandlers(httpServer);
 
-const nukeDatabase = false;
+const nukeDatabase = true;
 const isDev = process.env.ENV === 'DEV';
 const port = process.env.PORT || 4000;
 

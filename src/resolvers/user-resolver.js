@@ -12,8 +12,9 @@ const signUp = async ({ email, name, password }, { models, secret }) => {
   const id = uuid();
 
   // create root list for new user
-  const element = { name: 'root list', owner_id: id }
-  const { id: root_list_id } = await createElement({ element }, { models });
+  const element = { name: 'root list' }
+  const me = { id };
+  const { id: root_list_id } = await createElement({ element }, { models, me });
   if (!root_list_id) return;
 
 
@@ -46,7 +47,10 @@ const signIn = async ({ email, password }, { models, secret }) => {
   }
 };
 
+const getUserById = async (id, models) => await models.User.findByPk(id);
+
 module.exports = {
+  getUserById,
   signUp,
   signIn
 };

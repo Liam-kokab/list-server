@@ -39,7 +39,7 @@ const elementModule = (sequelize, DataTypes) =>
     },
 
     parent_id: {
-      type: DataTypes.UUID,
+      type: DataTypes.ARRAY(DataTypes.JSONB),
     },
 
     children_ids: {
